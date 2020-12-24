@@ -249,7 +249,9 @@ void Algorithms::DLS_Search(int depth)
 					std::reverse(result_path_values.begin(), result_path_values.end());
 
 					GetResultPathString(result_path_values);
+
 					algorithm_run_status = true;
+
 					return;
 				}
 			}
@@ -277,7 +279,110 @@ void Algorithms::IDS_Search()
 
 void Algorithms::UCS_Search()
 {
+	unsigned int i,j;
+	int min_vertex_index;
+	int min_vertex_path_cost;
+	int current_min;
+	int current_index;
+	int vertex;
+	std::vector<int> result_path_values;
+	std::vector<int> visited_vertices;
+	std::vector<int> parent_vertices;
+	std::vector<int> min_cost_to_vertices;
+	std::vector<int> min_queue;
+	std::vector<int> in_queue;
+	std::vector<int> neighbors;
 
+	for (i = 0; i < G.GetVertexCount(); i++)
+	{
+		visited_vertices.push_back(0);
+		in_queue.push_back(0);
+		parent_vertices.push_back(-1);
+		min_cost_to_vertices.push_back(INT_MAX);
+	}
+
+	min_vertex_index = start;
+	min_vertex_path_cost = G.GetVertexCost(start);
+	min_cost_to_vertices[start] = G.GetVertexCost(start);
+	min_queue.push_back(start);
+
+	while (min_queue.empty() == false)
+	{
+		for(j = 0; j < min_queue.size(); j++)
+		{
+			if (min_queue[j] == min_vertex_index) break;
+		}
+
+		min_queue.erase(min_queue.begin() + j);
+
+		visited_vertices[min_vertex_index] = 1;
+
+		in_queue[min_vertex_index] = 0;
+
+		number_of_expanded_nodes++;
+
+		if (visited_vertices[end] == 1)
+		{
+			vertex = end;
+
+			while (parent_vertices[vertex] != -1)
+			{
+				result_path_values.push_back(vertex);
+				vertex = parent_vertices[vertex];
+			}
+
+			result_cost = min_cost_to_vertices[end];
+
+			result_path_values.push_back(start);
+
+			std::reverse(result_path_values.begin(), result_path_values.end());
+
+			GetResultPathString(result_path_values);
+
+			algorithm_run_status = true;
+
+			return;
+		}
+
+		neighbors = G.GetNeighbors(min_vertex_index);
+
+		current_min = INT_MAX;
+		current_index = -1;
+
+		for (i = 0; i < neighbors.size(); i++)
+		{
+			if (visited_vertices[neighbors[i]] == 0)
+			{
+				if (in_queue[neighbors[i]] == 1)
+				{
+					if (min_cost_to_vertices[neighbors[i]] > min_cost_to_vertices[min_vertex_index] + G.GetVertexCost(neighbors[i]))
+					{
+						parent_vertices[neighbors[i]] = min_vertex_index;
+						min_cost_to_vertices[neighbors[i]] = min_cost_to_vertices[min_vertex_index] + G.GetVertexCost(neighbors[i]);
+					}
+				}
+
+				else
+				{
+					in_queue[neighbors[i]] = 1;
+					min_queue.push_back(neighbors[i]);
+					parent_vertices[neighbors[i]] = min_vertex_index;
+					min_cost_to_vertices[neighbors[i]] = min_cost_to_vertices[min_vertex_index] + G.GetVertexCost(neighbors[i]);
+				}
+
+				if (current_min > min_cost_to_vertices[neighbors[i]])
+				{
+					current_min = min_cost_to_vertices[neighbors[i]];
+					current_index = neighbors[i];
+				}
+			}
+		}
+
+		min_vertex_path_cost = current_min;
+		min_vertex_index = current_index;
+	}
+
+	algorithm_run_status = false;
 }
 
 void Algorithms::ASTAR_Search()
