@@ -1,56 +1,133 @@
 #include "pch.h"
 #include "Graph.h"
 
-Graph::Graph(std::string n, int s) : size(s), vertices(nullptr), edges(nullptr)
+Graph::Graph()
 {
-	vertices = NULL;
-	edges = NULL;
+}
 
-	vertices = new int[size];
+Graph::Graph(int s)
+{
+	size = s * s;
+
+	row_col_length = s;
+
+	std::vector<int> neighbors = { -1,-1,-1,-1,-1,-1,-1,-1 };
 
 	for (int i = 0; i < size; i++)
 	{
-		vertices[i] = -1;
+		vertices_costs.push_back(-1);
+		edges.push_back(neighbors);
+	}
+}
+
+int Graph::GetVertexCost(int index) const
+{
+	return vertices_costs[index];
+}
+
+int Graph::GetVertexCount() const
+{
+	return size;
+}
+
+bool Graph::IsValidEdge(int index, int neighbor_index) const
+{
+	return (edges[index][neighbor_index] == 1);
+}
+
+int Graph::GetNeighbor(int index, int neighbor_index) const
+{
+	if (IsValidEdge(index, neighbor_index) == 1)
+	{
+		if (neighbor_index == UP)
+		{
+			return index - row_col_length;
+		}
+
+		else if (neighbor_index == DOWN)
+		{
+			return index + row_col_length;
+		}
+
+		else if (neighbor_index == RIGHT)
+		{
+			return index + 1;
+		}
+
+		else if (neighbor_index == LEFT)
+		{
+			return index - 1;
+		}
+
+		else if (neighbor_index == UPPER_RIGHT)
+		{
+			return index - row_col_length + 1;
+		}
+
+		else if (neighbor_index == UPPER_LEFT)
+		{
+			return index - row_col_length - 1;
+		}
+
+		else if (neighbor_index == BOTTOM_RIGHT)
+		{
+			return index + row_col_length + 1;
+		}
+
+		else if (neighbor_index == BOTTOM_LEFT)
+		{
+			return index + row_col_length - 1;
+		}
+
 	}
 
-	edges = new int*[size];
+	return -1;
+}
 
-	for (int i = 0; i < 5; i++)
+int Graph::GetNeighborType(int index, int neighbor) const
+{
+	for (int i = 0; i < MAX_NEIGHBORS; i++)
 	{
-		edges[i] = new int[size];
-
-		for (int j = 0; j < size; j++)
+		if (GetNeighbor(index, i) == neighbor)
 		{
-			edges[i][j] = -1;
+			return i;
 		}
 	}
+
+	return -1;
 }
 
-Graph::~Graph()
+std::vector<int> Graph::GetNeighbors(int index) const
 {
-	delete[] vertices;
+	std::vector<int> neighbors;
 
-	for (int i = 0; i < size; i++) delete[] edges[i];
-	
-	delete[] edges;
+	if(IsValidEdge(index, UP) == 1) neighbors.push_back(index - row_col_length);
+
+    if(IsValidEdge(index, DOWN) == 1) neighbors.push_back(index + row_col_length);
+
+	if(IsValidEdge(index, RIGHT) == 1) neighbors.push_back(index + 1);
+
+	if(IsValidEdge(index, LEFT) == 1) neighbors.push_back(index - 1);
+
+	if(IsValidEdge(index, UPPER_RIGHT) == 1) neighbors.push_back(index - row_col_length + 1);
+
+	if(IsValidEdge(index, UPPER_LEFT) == 1) neighbors.push_back(index - row_col_length - 1);
+
+    if(IsValidEdge(index, BOTTOM_RIGHT) == 1) neighbors.push_back(index + row_col_length + 1);
+
+	if(IsValidEdge(index, BOTTOM_LEFT) == 1) neighbors.push_back(index + row_col_length - 1);
+		 
+	return neighbors;
 }
 
-int Graph::GetVertex(int index) const
+void Graph::AddVertex(int index, int vertex_cost)
 {
-	return vertices[index];
+	vertices_costs[index] = vertex_cost;
 }
 
-bool Graph::IsValidEdge(int i, int j) const
+void Graph::AddEdge(int index, int neighbor_index)
 {
-	return (edges[i][j] == 1);
+	edges[index][neighbor_index] = 1;
 }
 
-void Graph::AddVertex(int index, int vertex)
-{
-	vertices[index] = vertex;
-}
 
-void Graph::AddEdge(int i, int j)
-{
-	edges[i][j] = 1;
-}

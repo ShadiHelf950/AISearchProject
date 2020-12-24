@@ -1,24 +1,44 @@
 #pragma once
 #include "vector"
 #include <string>
+#define UP 0
+#define DOWN 1
+#define RIGHT 2
+#define LEFT 3
+#define UPPER_RIGHT 4
+#define UPPER_LEFT 5
+#define BOTTOM_RIGHT 6
+#define BOTTOM_LEFT 7
+#define MAX_NEIGHBORS 8
 
 class Graph
 {
 public:
 
-	Graph(std::string n, int s);
+	Graph();
 
-	~Graph();
+	Graph(int s);
 
-	int GetVertex(int index) const;
-	bool IsValidEdge(int i, int j) const;
+	int GetVertexCost(int index) const;
 
-	void AddVertex(int index, int vertex);
-	void AddEdge(int i, int j);
+	int GetVertexCount() const;
+
+	bool IsValidEdge(int index, int neighbor_index) const;
+
+	int GetNeighbor(int index, int neighbor_index) const;
+
+	int GetNeighborType(int index, int neighbor) const;
+
+	std::vector<int> GetNeighbors(int index) const;
+
+	void AddVertex(int index, int vertex_cost);
+
+	void AddEdge(int index, int neighbor_index);
 
 private:
-	std::string name;
+
 	int size;
-	int* vertices;
-	int** edges;
+	int row_col_length;
+	std::vector<int> vertices_costs;
+	std::vector<std::vector<int>> edges;
 };
