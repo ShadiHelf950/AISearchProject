@@ -19,7 +19,7 @@ public:
 
 	Graph(int s);
 
-	int GetVertexCost(int index) const;
+	float GetVertexCost(int index) const;
 
 	int GetVertexCount() const;
 
@@ -29,9 +29,11 @@ public:
 
 	int GetNeighborType(int index, int neighbor) const;
 
+	int GetRowColLength() const;
+
 	std::vector<int> GetNeighbors(int index) const;
 
-	void AddVertex(int index, int vertex_cost);
+	void AddVertex(int index, float vertex_cost);
 
 	void AddEdge(int index, int neighbor_index);
 
@@ -39,6 +41,6 @@ private:
 
 	int size;
 	int row_col_length;
-	std::vector<int> vertices_costs;
+	std::vector<float> vertices_costs;
 	std::vector<std::vector<int>> edges;
 };

@@ -20,7 +20,7 @@ Graph::Graph(int s)
 	}
 }
 
-int Graph::GetVertexCost(int index) const
+float Graph::GetVertexCost(int index) const
 {
 	return vertices_costs[index];
 }
@@ -97,6 +97,11 @@ int Graph::GetNeighborType(int index, int neighbor) const
 	return -1;
 }
 
+int Graph::GetRowColLength() const
+{
+	return row_col_length;
+}
+
 std::vector<int> Graph::GetNeighbors(int index) const
 {
 	std::vector<int> neighbors;
@@ -120,7 +125,7 @@ std::vector<int> Graph::GetNeighbors(int index) const
 	return neighbors;
 }
 
-void Graph::AddVertex(int index, int vertex_cost)
+void Graph::AddVertex(int index, float vertex_cost)
 {
 	vertices_costs[index] = vertex_cost;
 }

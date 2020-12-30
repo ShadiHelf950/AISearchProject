@@ -23,13 +23,12 @@ std::pair<std::string,Graph> Utils::GetParametersAndGraph(const std::string& fil
 	std::string line;
 	std::string temp_line;
 	std::string token;
-	std::string delimeter = ", ";
+	std::string delimeter = ",";
 	size_t pos = 0;
 	int line_count = 1;
 	int count = 0;
 	int row, col;
-
-	std::string object_name = Utils::GetFileName(filePath);
+	int current_number;
 
 	std::ifstream object(filePath.c_str());
 
@@ -77,7 +76,7 @@ std::pair<std::string,Graph> Utils::GetParametersAndGraph(const std::string& fil
 
 		else if (line_count >= 5)
 		{
-			temp_line = line.substr(1, line.length()-1);
+			temp_line = line;
 
 			while ((pos = temp_line.find(delimeter)) != std::string::npos)
 			{
@@ -85,13 +84,15 @@ std::pair<std::string,Graph> Utils::GetParametersAndGraph(const std::string& fil
 
 				temp_line.erase(0, pos + delimeter.length());
 
-				G.AddVertex(count, std::atoi(token.c_str()));
+				current_number = std::stof(token);
+
+				G.AddVertex(count, current_number);
 
 				count++;
 			}
 
 			final_row_value = temp_line;
-			G.AddVertex(count, std::atoi(final_row_value.c_str()));
+			G.AddVertex(count, std::stof(final_row_value));
 			count++;
 		}
 
@@ -183,38 +184,3 @@ std::pair<std::string,Graph> Utils::GetParametersAndGraph(const std::string& fil
 	return std::make_pair(algorithm_name + " " + std::to_string(start) + " " + std::to_string(end), G);
 }
 
-std::string Utils::GetFileName(const std::string& filePath)
-{
-	if (filePath.empty()) {
-		return {};
-	}
-
-	auto len = filePath.length();
-	auto index = filePath.find_last_of("/\\");
-
-	if (index == std::string::npos) {
-		return filePath;
-	}
-
-	if (index + 1 >= len) {
-
-		len--;
-		index = filePath.substr(0, len).find_last_of("/\\");
-
-		if (len == 0) {
-			return filePath;
-		}
-
-		if (index == 0) {
-			return filePath.substr(1, len - 1);
-		}
-
-		if (index == std::string::npos) {
-			return filePath.substr(0, len);
-		}
-
-		return filePath.substr(index + 1, len - index - 1);
-	}
-
-	return filePath.substr(index + 1, len - index);
-}
