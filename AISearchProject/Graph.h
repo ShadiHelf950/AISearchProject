@@ -1,6 +1,9 @@
 #pragma once
 #include "vector"
 #include <string>
+
+// Neighbor Types:
+
 #define UP 0
 #define DOWN 1
 #define RIGHT 2
@@ -9,10 +12,18 @@
 #define UPPER_LEFT 5
 #define BOTTOM_RIGHT 6
 #define BOTTOM_LEFT 7
-#define MAX_NEIGHBORS 8
+
+
+#define MAX_NEIGHBORS 8 // Maximum number of neighbors ( cell has valid cells ( not -1 ) in all 8 directions )
+
+// Class Functionality : A class to represent the graph that we get from the input grid ( we store the vertices' prices and edges )
 
 class Graph
 {
+	/****************************************************** Functions *************************************************************/
+
+   // NOTE : Functions explanations are in the cpp file.
+
 public:
 
 	Graph();
@@ -39,8 +50,11 @@ public:
 
 private:
 
-	int size;
-	int row_col_length;
-	std::vector<float> vertices_costs;
-	std::vector<std::vector<int>> edges;
+	int size; // Number of vertices in the graph
+
+	int row_col_length; // Length of a column or a row in the grid
+
+	std::vector<float> vertices_costs; // Cost of vertices
+
+	std::vector<std::vector<int>> edges; // Edges list of the graph
 };

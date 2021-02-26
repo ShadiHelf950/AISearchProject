@@ -3,9 +3,15 @@
 #include "list"
 #include <string>
 #include "Graph.h"
- 
+
+// Class Functionality : A class to run the graph searching algorithms 
+
 class Algorithms
 {
+	/****************************************************** Functions *************************************************************/
+
+   // NOTE : Functions explanations are in the cpp file.
+
 public:
 
 	Algorithms();
@@ -16,11 +22,19 @@ public:
 
 	void SetEnd(int index);
 
+	void SetInputTime(float t_input);
+
+	void SetTimeLimit(float limit);
+
 	void SetActiveGraph(const Graph& graph);
 
-	void SetHeuristicFunction(std::string heuristic_type);
+	void SetHeuristicFunction();
 
 	void RunActiveAlgorithm();
+
+	float GetExecutionTime() const;
+
+	bool GetAlgorithmStatus() const;
 
 	std::string GetResultPath() const;
 	
@@ -58,8 +72,6 @@ private:
 
 	float ChebyshevDistance(int vertex, int goal);
 
-	float OctileDistance(int vertex, int goal);
-
 	std::string GetResultPathString(std::vector<int> result_path_values);
 
 	void ASTAR_Search_Aux(bool threshold_flag);
@@ -78,39 +90,79 @@ private:
 
 private:
 
-	Graph G;
-	int start;
-	int end;
-	float threshold;
-	std::vector<float> heuristic_function;
-	float heuristic_sum;
-	int min_search_tree_depth;
-	int max_search_tree_depth;
-	float avg_search_tree_depth;
-	std::string active_algorithm;
-	bool algorithm_run_status;
-	int solution_length;
-	float result_cost;
-	std::string result_path;
-	int number_of_expanded_nodes;
+	Graph G; // Graph which we run our algorithms on
 
-	std::vector<float> heuristic_function_fowards;
-	float heuristic_sum_fowards;
-	int solution_length_fowards;
-	float result_cost_fowards;
-	std::string result_path_fowards;
-	int number_of_expanded_nodes_fowards;
-	int min_search_tree_depth_fowards;
-	int max_search_tree_depth_fowards;
-	float avg_search_tree_depth_fowards;
+	int start; // Starting point on the grid 
 
-	std::vector<float> heuristic_function_backwards;
-	float heuristic_sum_backwards;
-	int solution_length_backwards;
-	float result_cost_backwards;
-	std::string result_path_backwards;
-	int number_of_expanded_nodes_backwards;
-	int min_search_tree_depth_backwards;
-	int max_search_tree_depth_backwards;
-	float avg_search_tree_depth_backwards;
+	int end;  // Ending point on the grid 
+
+	float input_time; // Input getting time
+
+	float execution_time; // execution time for algorithm until success of failure
+
+	float time_limit; // time limit for algorithm execution time
+
+	float threshold; // Threshold for f values which is used in the IDASTAR algorithm
+
+	std::vector<float> heuristic_function; // Heuristic function for graph vertices
+
+	float heuristic_sum; // Sum of the heuristic function values for the vertices in the solution of the algorithm
+
+	int min_search_tree_depth; // Minimum depth of the search tree of the algorithm
+
+	int max_search_tree_depth; // Maximum depth of the search tree of the algorithm
+
+	float avg_search_tree_depth; // Average of depths of the search tree of the algorithm
+
+	std::string active_algorithm; // Name of active the algorithm
+
+	bool algorithm_run_status; // Boolean variable which indicates if the algorithm has found a solution or not
+
+	int solution_length; // Number edges in the solution path of the algorithm
+
+	float result_cost; // Cost of the path which is returned by the algorithm
+
+	std::string result_path; // Result path which is returned by the algorithm
+
+	int number_of_expanded_nodes; // Number of expanded vertices which is returned by the algorithm
+
+
+
+    // Fields that belong exclusively to the BIASTAR algorithm :
+
+	std::vector<float> heuristic_function_forwards; // Heuristic function for graph vertices in the forwards run
+
+	float heuristic_sum_forwards; // Sum of the heuristic function values for the vertices in the solution of the forwards run
+
+	int solution_length_forwards; // Number edges in the solution path of the forwards run
+
+	float result_cost_forwards; // Cost of the path which is returned by the forwards run
+
+	std::string result_path_forwards; // Result path which is returned by the forwards run
+
+	int number_of_expanded_nodes_forwards; // Number of expanded vertices which is returned by the forwards run
+
+	int min_search_tree_depth_forwards; // Minimum depth of the search tree of the forwards run
+
+	int max_search_tree_depth_forwards; // Maximum depth of the search tree of the forwards run
+
+	float avg_search_tree_depth_forwards; // Average of depths of the search tree of the forwards run
+
+	std::vector<float> heuristic_function_backwards; // Heuristic function for graph vertices in the backwards run
+
+	float heuristic_sum_backwards;  // Sum of the heuristic function values for the vertices in the solution of the backwards run
+
+	int solution_length_backwards; // Number edges in the solution path of the backwards run
+
+	float result_cost_backwards; // Cost of the path which is returned by the backwards run
+
+	std::string result_path_backwards; // Result path which is returned by the backwards run
+
+	int number_of_expanded_nodes_backwards; // Number of expanded vertices which is returned by the backwards run
+
+	int min_search_tree_depth_backwards; // Minimum depth of the search tree of the backwards run
+
+	int max_search_tree_depth_backwards; // Maximum depth of the search tree of the backwards run
+
+	float avg_search_tree_depth_backwards; // Average of depths of the search tree of the backwards run
 };
