@@ -4,6 +4,8 @@
 
 ## Date Of Creation: December 21, 2020.
 
+# VERY IMPORTANT : Read the AI_Project_Summary PDF file in order to understand the inner workings of this project.
+
 ## Summary:
 A project which revolves around finding optimal cost path in a grid with a given start and end points using both informed and uninformed search algorithms with some squares in the grid that are a dead end and has a value of -1. The algorithms used in
 this project are Iterative Deepining Search (IDS) , Uniform Cost Search (UCS) , A* (ASTAR) , Iterative Deepining A* (IDASTAR) , Bidirectional A* (BIASTAR) 
