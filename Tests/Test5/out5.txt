@@ -1,0 +1,29 @@
+Enter a time limit factor for the algorithm (dimension is 50): 3
+
+Time limit = dimension * factor = 150.000000 seconds
+
+SOLUTION DETAILS (IDS) :
+
+***************************************************************************************
+
+Path : D-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-R-RD
+
+Cost : 267.562988
+
+Number Of Expanded Vertices : 2259
+
+***************************************************************************************
+
+Solution Length : 51
+
+Execution Time : 2.261000 seconds
+
+Penetrance : 0.022576
+
+Effective Branching Factor Is Approximately : 1.163491
+
+Minimum Search Tree Depth : 1
+
+Maximum Search Tree Depth : 50
+
+Average Of Search Tree Depths : 32.012821
