@@ -11,7 +11,7 @@ A project which revolves around finding optimal cost path in a grid with a given
 this project are Iterative Deepining Search (IDS) , Uniform Cost Search (UCS) , A* (ASTAR) , Iterative Deepining A* (IDASTAR) , Bidirectional A* (BIASTAR).
 Tests files and their results are in the 'Tests' folder.
 
-UPDATE: Code is tested and working 100% In order to run the program download and open the AISearchProject.exe file and follow these steps :
+UPDATE: Code is tested and working 100% In order to run the program download the AISearchProject.exe file and follow these steps :
 
 1. Open the AISearchProject executable file.
 
