@@ -1,0 +1,65 @@
+Enter a time limit factor for the algorithm (dimension is 70): 0.1
+
+Time limit = dimension * factor = 7.000000 seconds
+
+SOLUTION DETAILS (BIASTAR) :
+
+***************************************************************************************
+
+Path : RD-RD-D-RD-RD-R-R-RD-RD-RD-RU-R-RD-RD-RD-R-RD-RD-RD-RD-R-RD-RD-RU-R-R-RD-RD-D-D-D-D-D-D-D-D-D-D-LD-RD-RD-RD-D-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-R-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD
+
+Cost : 309.599976
+
+Number Of Expanded Vertices : 3382
+
+***************************************************************************************
+
+Solution Length : 79
+
+Execution Time : 3.405000 seconds
+
+
+FORWARDS RUN DETAILS :
+
+Path Forwards: RD-RD-D-RD-RD-R-R-RD-RD-RD-RU-R-RD-RD-RD-R-RD-RD-RD-RD-R-RD-RD-RU-R-R-RD-RD-D-D-D-D-D-D-D-D-D-D-LD-RD-RD-RD (Path begins at 2,4 and ends at 33,33)
+
+Cost Forwards: 100.000000
+
+Number Of Expanded Vertices Forwards: 1691
+
+Solution Length Forwards: 42
+
+Penetrance Forwards: 0.024837
+
+Heuristic Average Forwards: 54.231815
+
+Effective Branching Factor Forwards Is Approximately : 1.193605
+
+Minimum Search Tree Depth Forwards: 1
+
+Maximum Search Tree Depth Forwards: 71
+
+Average Of Search Tree Depths Forwards: 31.056616
+
+
+BACKWARDS RUN DETAILS :
+
+Path Backwards: D-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-R-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD-RD (Path begins at 33,33 and ends at 69,69)
+
+Cost Backwards: 209.599991
+
+Number Of Expanded Vertices Backwards: 1691
+
+Solution Length Backwards: 38
+
+Penetrance Backwards: 0.022472
+
+Heuristic Average Backwards: 53.348907
+
+Effective Branching Factor Backwards Is Approximately : 1.216049
+
+Minimum Search Tree Depth Backwards: 1
+
+Maximum Search Tree Depth Backwards: 70
+
+Average Of Search Tree Depths Backwards: 32.572689
