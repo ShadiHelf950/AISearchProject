@@ -1,0 +1,5 @@
+Enter a time limit factor for the algorithm (dimension is 85): 0.4
+
+Time limit = dimension * factor = 34.000000 seconds
+
+FAILED
