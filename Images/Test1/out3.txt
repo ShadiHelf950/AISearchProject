@@ -1,0 +1,31 @@
+Enter a time limit factor for the algorithm (dimension is 17): 0.2
+
+Time limit = dimension * factor = 3.400000 seconds
+
+SOLUTION DETAILS (ASTAR) :
+
+***************************************************************************************
+
+Path : RD-LD-D-RD-RD-R-RD-RD-RD-D-RD-RD-R-R-RD-R-RD-RD-RD-RD
+
+Cost : 36.000000
+
+Number Of Expanded Vertices : 127
+
+***************************************************************************************
+
+Solution Length : 21
+
+Execution Time : 0.026000 seconds
+
+Penetrance : 0.165354
+
+Heursistic Average : 10.787401
+
+Effective Branching Factor Is Approximately : 1.259451
+
+Minimum Search Tree Depth : 1
+
+Maximum Search Tree Depth : 21
+
+Average Of Search Tree Depths : 11.202847
