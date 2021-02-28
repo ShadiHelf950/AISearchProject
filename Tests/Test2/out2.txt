@@ -1,0 +1,31 @@
+Enter a time limit factor for the algorithm (dimension is 30): 0.2
+
+Time limit = dimension * factor = 6.000000 seconds
+
+SOLUTION DETAILS (IDASTAR) :
+
+***************************************************************************************
+
+Path : RD-RD-RD-RD-R-RD-RD-RD-R-R-RD-RD-RD-RU-R-RD-RD-RD-R-RD-RD-RD-RD-R-RD-RD-D-D-RD-D-RD-LD-RD-RD-D-D-D
+
+Cost : 119.000000
+
+Number Of Expanded Vertices : 812
+
+***************************************************************************************
+
+Solution Length : 38
+
+Execution Time : 3.642000 seconds
+
+Penetrance : 0.046798
+
+Heursistic Average : 19.381773
+
+Effective Branching Factor Is Approximately : 1.192799
+
+Minimum Search Tree Depth : 1
+
+Maximum Search Tree Depth : 40
+
+Average Of Search Tree Depths : 21.911535
